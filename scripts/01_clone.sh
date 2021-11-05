@@ -1,5 +1,3 @@
-set -e
-
 cd /
 
 BASE_DIR=spring
@@ -11,12 +9,19 @@ git config --global user.email "bar@springrts.de"
 
 rm -rf "${BASE_DIR}"
 
-git clone --recursive "${SPRING_URL}"/spring -b "${BRANCH_NAME}" "${BASE_DIR}"
+SPRING_URL="https://github.com/${GITHUB_SPRING_USER}/spring"
+
+echo "---------------------------------"
+echo "Cloning SpringRTS from: ${SPRING_URL}"
+echo "Using branch: ${BRANCH_NAME}"
+echo "---------------------------------"
+
+git clone --recursive "${SPRING_URL}" -b "${BRANCH_NAME}" "${BASE_DIR}"
 
 cd "${BASE_DIR}"
 
 #git fetch --tags --all
-git clone "${AUX_URL}"/mingwlibs64.git mingwlibs64
+git clone "https://github.com/${GITHUB_AUX_USER}/mingwlibs64.git" mingwlibs64
 
 cd AI/Skirmish/BARb
-git clone -b profile "${AUX_URL}"/BARbarIAn.git profile
+git clone -b profile "https://github.com/${GITHUB_AUX_USER}/BARbarIAn.git" profile

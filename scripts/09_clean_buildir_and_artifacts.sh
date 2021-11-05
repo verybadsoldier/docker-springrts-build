@@ -1,3 +1,5 @@
+set -e
+
 BUILDDIR="/spring/build"
 rm $BUILDDIR/${{ steps.pack-artifacts.outputs.bin_name }}
 rm $BUILDDIR/${{ steps.pack-artifacts.outputs.dbg_name }}

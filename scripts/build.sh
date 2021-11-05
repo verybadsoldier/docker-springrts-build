@@ -1,38 +1,28 @@
-git config --global user.name  "GitHub Action"
-git config --global user.email "action@github.com"
+set -e
 
-git clone --recursive https://github.com/verybadsoldier/spring.git -b BAR105 spring
+. /scripts/00_setup.sh
 
-cd /spring
+while getopts b:u:a: flag
+do
+    case "${flag}" in
+        b) BRANCH_NAME=${OPTARG};;
+        u) GITHUB_SPRING_USER=${OPTARG};;
+        a) GITHUB_AUX_USER=${OPTARG};;
+        \:) printf "argument missing from -%s option\n" $OPTARG
+            exit 2
+            ;;
+        \?) printf "unknown option: -%s\n" $OPTARG
+            exit 2
+            ;;
+    esac
+done
 
-git fetch --tags --all; \
-git clone https://github.com/verybadsoldier/mingwlibs64.git mingwlibs64; \
-cd AI/Skirmish/BARb; \
-git clone -b profile --single-branch https://github.com/verybadsoldier/BARbarIAn.git profile
-
-cd /spring
-
-#if [ -d ./mingwlibs ]; then
-#        WORKDIR=$(pwd)/mingwlibs
-#fi
-#if [ -d ./mingwlibs64 ]; then
-#        WORKDIR=$(pwd)/mingwlibs64
-#fi
-
-#LIBDIR=$WORKDIR/dll
-#INCLUDEDIR=$WORKDIR/include
-#MYARCHTUNE="" #${{ github.event.inputs.archtune-flags }}"
-#MYCFLAGS="" #${{ github.event.inputs.compilation-flags }}"
-#MYRWDIFLAGS="" #${{ github.event.inputs.relwithdeb-flags }}"
-#cmake \
-#-DCMAKE_TOOLCHAIN_FILE=/my.cmake \
-#-DMARCH_FLAG="${MYARCHTUNE}" \
-#-DCMAKE_CXX_FLAGS="${MYCFLAGS}" \
-#-DCMAKE_C_FLAGS="${MYCFLAGS}" \
-#-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="${MYRWDIFLAGS}" \
-#-DCMAKE_C_FLAGS_RELWITHDEBINFO="${MYRWDIFLAGS}" \
-#-DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
-#-DAI_TYPES=NATIVE \
-#-B ./build-windows64/ \
-#.
-
+cd /
+. /scripts/01_clone.sh
+. /scripts/02_configure.sh
+. /scripts/03_compile.sh
+. /scripts/04_fill_portable_dir.sh
+. /scripts/05_fill_debugsymbol_dir.sh
+. /scripts/06_fill_build_options_file.sh
+. /scripts/07_pack_build_artifacts.sh
+. /scripts/08_copy_to_publish_dir.sh

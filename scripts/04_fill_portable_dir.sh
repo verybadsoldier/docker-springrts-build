@@ -1,3 +1,6 @@
+# do not break on error here
+set +e
+
 cd /spring/build
 
 rm -rf ./bin-dir/*
@@ -37,3 +40,5 @@ cp -R ../AI/Skirmish/BARb/data/* ./bin-dir/AI/Skirmish/BARb/stable/
 cp -R ../AI/Skirmish/BARb/profile/AIOptions.lua ./bin-dir/AI/Skirmish/BARb/stable/
 cp -R ../AI/Skirmish/BARb/profile/config/ ./bin-dir/AI/Skirmish/BARb/stable/
 cp -R ../AI/Skirmish/BARb/profile/script/ ./bin-dir/AI/Skirmish/BARb/stable/
+
+set -e

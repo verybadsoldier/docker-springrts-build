@@ -1,6 +1,6 @@
 #export SPRING_URL="https://github.com/verybadsoldier"
-export SPRING_URL="https://github.com/beyond-all-reason"
-export AUX_URL="https://github.com/beyond-all-reason"
+export GITHUB_SPRING_USER="beyond-all-reason"
+export GITHUB_AUX_USER="beyond-all-reason"
 export BRANCH_NAME="BAR105"
 
 export MYARCHTUNE=""

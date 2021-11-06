@@ -1,5 +1,3 @@
-cd /spring/build
+echo "Copying artficats to publish dir: '${PUBLISH_DIR}'..."
 
-PUBLISH_DIR=/publish
-
-cp "${bin_name}" "${dbg_name}" buildoptions.txt "${PUBLISH_DIR}"
+cp "${BUILD_DIR}/${bin_name}" "${BUILD_DIR}/${dbg_name}" "${BUILD_DIR}/buildoptions.txt" "${PUBLISH_DIR}"

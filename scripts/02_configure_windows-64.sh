@@ -1,6 +1,4 @@
-cd /spring
-
-BUILD_DIR=build
+cd "${SPRING_DIR}"
 
 mkdir -p "${BUILD_DIR}"
 mkdir -p "${BUILD_DIR}"/bin-dir
@@ -16,7 +14,7 @@ LIBDIR=$WORKDIR/dll
 INCLUDEDIR=$WORKDIR/include
 
 cmake \
-	-DCMAKE_TOOLCHAIN_FILE=/scripts/x86_64-w64-mingw32.cmake \
+	-DCMAKE_TOOLCHAIN_FILE="/scripts/${PLATFORM}.cmake" \
 	-DMARCH_FLAG="${MYARCHTUNE}" \
 	-DCMAKE_CXX_FLAGS="${MYCFLAGS}" \
 	-DCMAKE_C_FLAGS="${MYCFLAGS}" \
@@ -24,5 +22,5 @@ cmake \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO="${MYRWDIFLAGS}" \
 	-DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
 	-DAI_TYPES=NATIVE \
-	-B ./"${BUILD_DIR}"/ \
+	-B "${BUILD_DIR}" \
 	.

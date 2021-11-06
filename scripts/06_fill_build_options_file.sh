@@ -1,8 +1,13 @@
-cd /spring/build
+cd "${BUILD_DIR}"
 
-rm -rf buildoptions.txt || true
-touch ./buildoptions.txt
-echo "MYARCHTUNE=$MYARCHTUNE" >> ./buildoptions.txt
-echo "MYCFLAGS=$MYCFLAGS" >> ./buildoptions.txt
-echo "MYRWDIFLAGS=$MYRWDIFLAGS" >> ./buildoptions.txt
-echo "$MYCXX_FLAGS" >> ./buildoptions.txt
+FILENAME_BUILDOPTIONS="buildoptions_${PLATFORM}.txt"
+
+rm -rf "${FILENAME_BUILDOPTIONS}" || true
+touch "${FILENAME_BUILDOPTIONS}"
+
+echo "MYARCHTUNE=$MYARCHTUNE" >> "${FILENAME_BUILDOPTIONS}"
+echo "MYCFLAGS=$MYCFLAGS" >> "${FILENAME_BUILDOPTIONS}"
+echo "MYRWDIFLAGS=$MYRWDIFLAGS" >> "${FILENAME_BUILDOPTIONS}"
+echo "MYCXX_FLAGS=$MYCXX_FLAGS" >> "${FILENAME_BUILDOPTIONS}"
+echo "PLATFORM=$PLATFORM" >> "${FILENAME_BUILDOPTIONS}"
+echo "BRANCH=$BRANCH" >> "${FILENAME_BUILDOPTIONS}"

@@ -1,7 +1,7 @@
 # do not break on error here
 set +e
 
-cd /spring/build
+cd "${BUILD_DIR}"
 
 rm -rf ./bin-dir/*
 cp ./spring* ./bin-dir/

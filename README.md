@@ -17,12 +17,12 @@ docker run -v D:\myspringbuild:/publish -it verybadsoldier/springrts-build:lates
 
 ### Building a custom Branch
 ```
-docker run -v D:\myspringbuild:/publish -it verybadsoldier/springrts-build:latest -b MyAwesomeFeatureBranch
+docker run -v D:\myspringbuild:/publish --rm -it verybadsoldier/springrts-build:latest -b MyAwesomeFeatureBranch
 ```
 
 ### Building from another GitHub Repository
 ```
-docker run -v D:\myspringbuild:/publish -it verybadsoldier/springrts-build:latest -u AverageJoe
+docker run -v D:\myspringbuild:/publish --rm -it verybadsoldier/springrts-build:latest -u AverageJoe
 ```
 
 ## Parameters
